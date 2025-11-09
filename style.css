@@ -1,0 +1,55 @@
+:root{
+  --bg:#071224;
+  --panel:#0b2b3a;
+  --accent:#7fe3d0;
+  --muted:#9fb6c2;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box;font-family:Inter, "Segoe UI", Roboto, Arial; color:#eaf8f6}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,#021021 0%, #071224 100%);
+}
+#app{
+  width:880px;
+  max-width:96%;
+  padding:18px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+h1{ margin:0; color:var(--accent) }
+.tagline{ margin:0; color:var(--muted); font-size:13px }
+
+#hud{ display:flex; justify-content:space-between; gap:12px; margin-bottom:12px; align-items:center; }
+.left, .right{ display:flex; gap:12px; align-items:center; }
+
+.panel{ background:var(--panel); padding:10px 12px; border-radius:10px; min-width:120px; }
+.label{ font-size:12px; color:var(--muted); margin-bottom:6px }
+#score{ font-size:26px; font-weight:800; color:var(--accent) }
+#timer{ font-size:22px; font-weight:700; color:#ffd77a }
+
+#progressBar{ width:280px; height:18px; background:var(--glass); border-radius:12px; overflow:hidden; }
+#progressFill{ width:0%; height:100%; background:linear-gradient(90deg,#4df0b9,#4db7ff); transition: width 300ms linear; }
+
+#game{ display:flex; flex-direction:column; gap:12px; align-items:center; }
+#questionBox{ width:100%; text-align:center; padding:22px; border-radius:12px; }
+.question{ font-size:38px; font-weight:900; color:#fff }
+
+#inputRow{ display:flex; gap:8px; width:100%; justify-content:center; align-items:center; }
+#answerInput{ width:220px; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:#021723; color:#fff; font-size:16px; outline:none; }
+button{ padding:10px 14px; border-radius:8px; border:none; background:var(--accent); color:#012; font-weight:800; cursor:pointer; }
+button.muted{ background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04) }
+
+#message{ width:100%; text-align:center; }
+.hidden{ display:none; }
+.correct{ background: rgba(77,240,185,0.08); color:#9ff7df; }
+.wrong{ background: rgba(255,123,123,0.08); color:#ffc7c7; }
+
+#controls{ display:flex; gap:12px; align-items:center; justify-content:center; width:100%; flex-wrap:wrap; }
+.small{ font-size:12px; color:var(--muted); margin-top:6px; text-align:center; }
