@@ -40,6 +40,12 @@ make build
 
 Download from the [Releases](https://github.com/edgard/opencompat/releases) page.
 
+### Docker
+
+```bash
+docker pull ghcr.io/edgard/opencompat:latest
+```
+
 ## Quick Start
 
 ```bash
@@ -57,6 +63,30 @@ curl http://localhost:8080/v1/chat/completions \
     "model": "chatgpt/gpt-5",
     "messages": [{"role": "user", "content": "Hello!"}]
   }'
+```
+
+### Docker
+
+The Docker image runs in server mode only. You must authenticate on your host
+machine first, then mount the credentials directory:
+
+```bash
+# 1. Login on host (credentials stored in $XDG_DATA_HOME/opencompat or ~/.local/share/opencompat)
+opencompat login chatgpt
+
+# 2. Run container with mounted credentials
+docker run -p 8080:8080 \
+  -v ~/.local/share/opencompat:/home/nonroot/.local/share/opencompat:ro \
+  ghcr.io/edgard/opencompat:latest
+```
+
+With environment variables:
+
+```bash
+docker run -p 8080:8080 \
+  -v ~/.local/share/opencompat:/home/nonroot/.local/share/opencompat:ro \
+  -e OPENCOMPAT_LOG_LEVEL=debug \
+  ghcr.io/edgard/opencompat:latest
 ```
 
 ## Usage

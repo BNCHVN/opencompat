@@ -58,5 +58,33 @@ changelog:
       - 'Merge pull request'
       - 'Merge branch'
 
+dockers:
+  - image_templates:
+      - "ghcr.io/edgard/opencompat:{{ .Version }}-amd64"
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/amd64"
+    goarch: amd64
+
+  - image_templates:
+      - "ghcr.io/edgard/opencompat:{{ .Version }}-arm64"
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/arm64"
+    goarch: arm64
+
+docker_manifests:
+  - name_template: "ghcr.io/edgard/opencompat:{{ .Version }}"
+    image_templates:
+      - "ghcr.io/edgard/opencompat:{{ .Version }}-amd64"
+      - "ghcr.io/edgard/opencompat:{{ .Version }}-arm64"
+
+  - name_template: "ghcr.io/edgard/opencompat:latest"
+    image_templates:
+      - "ghcr.io/edgard/opencompat:{{ .Version }}-amd64"
+      - "ghcr.io/edgard/opencompat:{{ .Version }}-arm64"
+
 release:
   prerelease: auto
