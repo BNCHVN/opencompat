@@ -1,0 +1,6 @@
+/opencompat
+/_ref
+/tests/.venv
+/PLAN.md
+__pycache__/
+*.pyc
